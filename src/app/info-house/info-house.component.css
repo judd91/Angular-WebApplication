@@ -1,0 +1,13 @@
+.row{
+  top: 64px;
+  position: absolute;
+  width: 100%;
+}
+.jumbotron{
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: rgba(136, 57, 50, 0.9);
+  /* min-width: 50%;
+  max-width: 80%; */
+
+}

@@ -1,0 +1,127 @@
+<div class="row d-flex justify-content-center">
+
+    <div class="jumbotron jumbotron-fluid col-8">
+        <a type="button" class="close btn btn-dark fa fa-times" aria-label="Close" (click)="returnToIndex()" style="color:#fff">
+            <span aria-hidden="true" ></span>
+        </a>
+        <div *ngIf="element" class="container col-8">
+
+            <h1 class="display-4 font-weight-bold" style="color: #fff">{{ element.name }}</h1>
+            <hr class="my-4">
+            <div class="col-xs-12">
+                <table class="table" style="color: #fff; ">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td>{{ element.name }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Url</th>
+                            <td>{{ element.url }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Region</th>
+                            <td>{{ element.region }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Coat Of Arms</th>
+                            <td>{{ element.coatOfArms }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Words</th>
+                            <td>{{ element.words }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Titles</th>
+                            <td> {{ element.titles }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Seats</th>
+                            <td>{{ element.seats }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Current Lord</th>
+                            <td><a *ngIf="element.currentLord" appUrlInfo #currentLord="localVariables"
+                                    urlinfo="{{element.currentLord}}" [routerLink]
+                                    (click)="gotoMember(element.currentLord, element.name)" style="color: #fff">{{ currentLord.name }} </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Heir</th>
+                            <td><a *ngIf="element.heir" appUrlInfo #heir="localVariables" urlinfo="{{element.heir}}"
+                                    [routerLink] (click)="gotoMember(element.heir, element.name)" style="color: #fff">{{ heir.name }} </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Overlord</th>
+                            <td><a *ngIf="element.overlord" appUrlInfo #overlord="localVariables"
+                                    urlinfo="{{element.overlord}}" [routerLink]
+                                    (click)="gotoMember(element.overlord, element.name)" style="color: #fff">{{ overlord.name }} </a>
+                                    <!-- <td><a *ngIf="element.overlord">
+                                                <button type="button" class="btn btn-outline-light mr-2" placement="right"
+                                                    [ngbPopover]="popOver" popoverTitle="{{ overlord.name }}" appUrlInfo
+                                                    #overlord="localVariables" urlinfo="{{element.overlord}}"> {{ overlord.name }}
+                                                    <ng-template #popOver>
+                                                        <a *ngFor="let i of overlord.info | keyvalue"> <a
+                                                                *ngIf="i.key != 'characters' && i.key != 'povCharacters' "><b>{{ i.key }}</b>
+                                                                : {{ i.value }} </a></a>
+                                                    </ng-template>
+                                                </button>
+                                        </a> -->
+                                </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Founded</th>
+                            <td>{{ element.founded }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Founder</th>
+                            <td><a *ngIf="element.founder" appUrlInfo #founder="localVariables"
+                                    urlinfo="{{element.founder}}" [routerLink]
+                                    (click)="gotoMember(element.overlord, founder.name)" style="color: #fff">{{ founder.name }} </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Died Out</th>
+                            <td>{{ element.diedOut }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ancestral Weapons</th>
+                            <td>{{ element.ancestralWeapons }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Cadet Branches</th>
+                            <td><a *ngIf="element.cadetBranches">
+                                    <p *ngFor="let member of element.cadetBranches"> <a appUrlInfo
+                                            #cadetBranches="localVariables" urlinfo="{{member}}" [routerLink]
+                                            (click)="gotoMember(member, cadetBranches.name)" style="color: #fff"> {{ cadetBranches.name }}
+                                        </a> </p>
+                                </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sworn Members</th>
+                            <td><a *ngIf="element.swornMembers">
+                                    <p *ngFor="let member of element.swornMembers"> <a appUrlInfo
+                                            #swornMembers="localVariables" urlinfo="{{member}}" [routerLink]
+                                            (click)="gotoMember(member, swornMembers.name)" style="color: #fff"> {{ swornMembers.name }}
+                                        </a> </p>
+                                </a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="isLoading" class="card-img-overlay d-flex justify-content-center align-items-center p-0">
+        <div class=" border-0 bg-transparent" [style.width.px]="135">
+           <mat-spinner [strokeWidth]="7" [diameter]="160" [value]="100" class="card-img">
+           </mat-spinner>
+   
+           <div class="card-img-overlay d-flex justify-content-center align-items-center p-0">
+                <img src="../../assets/joffrey.png" alt="image" height="100" width="100">
+           </div>
+        </div>
+      </div>

@@ -1,0 +1,23 @@
+.cardscontainer{
+    top: 64px;
+    position: absolute;
+    width: 100%;
+  }
+
+.card{
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    margin: 1% 2% 1% 2%;
+    min-height: 150px;
+    background:radial-gradient(circle, rgba(237,212,157,0.9) 0%, rgba(151,68,73,0.9) 100%);
+    color: #ffffff
+}
+
+.jumbotron{
+  top: 64px;
+  position: absolute;
+}
+
+.modal-content{
+  background: rgba(237,212,157,1)
+}

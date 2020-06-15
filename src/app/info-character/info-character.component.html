@@ -1,0 +1,146 @@
+<!-- <div style="position: absolute; z-index: 10;"><mat-spinner *ngIf="isLoading" class="center-screen" ></mat-spinner> <div>Hodor</div></div> -->
+
+
+<div class="row d-flex justify-content-center">
+    <div class="jumbotron jumbotron-fluid col-8 ">
+        <a type="button" class="close btn btn-dark fa fa-times" aria-label="Close" (click)="returnToIndex()" style="color:#fff">
+            <span aria-hidden="true" ></span>
+        </a>
+        <div *ngIf="character" class="container col-8">
+            <h1 class="display-4 font-weight-bold" style="color: #fff">{{ character.name }}</h1>
+            <hr class="my-4">
+            <div class="col-xs-12" >
+                <table class="table ">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td>{{ character.name }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Url</th>
+                            <td>{{ character.url }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gender</th>
+                            <td>{{ character.gender }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Culture</th>
+                            <td>{{ character.culture }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Born</th>
+                            <td>{{ character.born }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Died</th>
+                            <td> {{ character.died }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Titles</th>
+                            <td><a *ngIf="character.titles">
+                                    <p *ngFor="let member of character.titles; let isLast=last "> {{ member.name }}
+                                        {{isLast ? '' : ', '}} </p>
+                                </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Aliases</th>
+                            <td><a *ngIf="character.aliases">
+                                    <p *ngFor="let member of character.aliases; let isLast=last "> {{ member.name }}
+                                        {{isLast ? '' : ', '}} </p>
+                                </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Father</th>
+                            <td>{{ character.father }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mother</th>
+                            <td>{{ character.mother }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Spouse</th>
+                            <td>{{ character.Spouse }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Allegiances</th>
+                            <td><a *ngIf="character.allegiances">
+                                    <p *ngFor="let member of character.allegiances">
+                                        <button type="button" class="btn btn-outline-light mr-2" placement="right"
+                                            [ngbPopover]="popOver" appUrlInfo
+                                            #allegiances="localVariables" urlinfo="{{member}}"> {{ allegiances.name }}
+                                            <ng-template #popOver>
+                                                <a *ngFor="let i of allegiances.info | keyvalue"> <a
+                                                        *ngIf="i.key != 'characters' && i.key != 'povCharacters' "><b>{{ i.key }}</b>
+                                                        : {{ i.value }} </a></a>
+                                            </ng-template>
+                                        </button>
+                                    </p>
+                                </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Books</th>
+                            <td><a *ngIf="character.books">
+                                    <p *ngFor="let member of character.books">
+                                        <button type="button" class="btn btn-outline-light mr-2" placement="right"
+                                            [ngbPopover]="popOver" appUrlInfo
+                                            #books="localVariables" urlinfo="{{member}}"> {{ books.name }}
+                                            <ng-template #popOver>
+                                                <a *ngFor="let i of books.info | keyvalue"> <a
+                                                        *ngIf="i.key != 'characters' && i.key != 'povCharacters' "><b>{{ i.key }}</b>
+                                                        : {{ i.value }} </a></a>
+                                            </ng-template>
+                                        </button>
+                                    </p>
+                                </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Pov Books</th>
+                            <td><a *ngIf="character.povBooks">
+                                    <p *ngFor="let member of character.povBooks">
+                                        <button type="button" class="btn btn-outline-secondary mr-2" placement="right"
+                                            [ngbPopover]="popOver" appUrlInfo
+                                            #povBooks="localVariables" urlinfo="{{member}}"> {{ povBooks.name }}
+                                            <ng-template #popOver class="popoverdata">
+                                                <a *ngFor="let i of povBooks.info | keyvalue"> <a
+                                                        *ngIf="i.key != 'characters' && i.key != 'povCharacters' "><b>{{ i.key }}</b>
+                                                        : {{ i.value }} </a></a>
+                                            </ng-template>
+                                        </button>
+                                    </p>
+                                </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">TV Series</th>
+                            <td><a *ngIf="character.tvSeries">
+                                    <p *ngFor="let member of character.tvSeries; let isLast=last"> {{ member.name }}
+                                        {{isLast ? '' : ', '}} </p>
+                                </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Played By</th>
+                            <td>
+                                <a *ngIf="character.playedBy">
+                                    <p *ngFor="let member of character.playedBy; let isLast=last "> {{ member.name }}
+                                        {{isLast ? '' : ', '}} </p>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading" class="card-img-overlay d-flex justify-content-center align-items-center p-0">
+        <div class="border-0 bg-transparent" [style.width.px]="135">
+           <mat-spinner [strokeWidth]="7" [diameter]="135" [value]="160" class="card-img">
+           </mat-spinner>
+   
+           <div class="card-img-overlay d-flex justify-content-center align-items-center p-0 ">
+                <img src="../../assets/joffrey.png" alt="image" height="100" width="100">
+           </div>
+        </div>
+      </div>

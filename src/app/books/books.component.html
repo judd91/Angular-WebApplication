@@ -1,0 +1,102 @@
+<div class="cardscontainer ">
+    <div class="row d-flex justify-content-center  ">
+        <div class="card col-4 col-sm-2  " *ngFor="let book of books">
+            <div class="card-body d-flex d-flex justify-content-center flex-column btn btn-fix " data-toggle="modal"
+                data-target="#bookModal" (click)="sendBook(book)">
+                <h5 class="card-title">{{ book.name }}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div *ngIf="book" class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookModalLabel">{{ book.name }}</h5>
+                <a type="button" class="close fa fa-times" data-dismiss="modal" aria-label="Close" >
+                    <span aria-hidden="true" ></span>
+                </a>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="table table-borderless col-10">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Name</th>
+                                    <td>{{book.name}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Url</th>
+                                    <td>{{book.url}}</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Isbn</th>
+                                    <td>{{ book.isbn }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Authors</th>
+                                    <td>{{book.authors}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Number Of Pages</th>
+                                    <td>{{book.numberOfPages}}</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Publisher</th>
+                                    <td>{{ book.publisher }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Country</th>
+                                    <td>{{book.country}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Media Type</th>
+                                    <td>{{book.mediaType}}</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Released</th>
+                                    <td>{{ book.released }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Characters <button
+                                            [className]="show ? 'btn btn-info btn-sm fa fa-sort-asc' : 'btn btn-info btn-sm fa fa-sort-down'"
+                                            style="background: #974449; border: #974449" (click)="showHideChar()">
+                                        </button> </th>
+                                    <td> <a *ngIf="show"><a *ngFor="let member of book.characters; let isLast=last"> <a
+                                                    appUrlInfo #local="localVariables" urlinfo="{{member}}" [routerLink]
+                                                    placement="bottom" ngbTooltip="{{ member }}">
+                                                    {{ local.name }}{{isLast ? '' : ', '}} </a> </a> </a></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Pov Characters <button
+                                            [className]="povshow ? 'btn btn-info btn-sm fa fa-sort-asc' : 'btn btn-info btn-sm fa fa-sort-down'"
+                                            style="background: #974449; border: #974449" (click)="showHidepovChar()">
+                                        </button></th>
+                                    <td><a *ngIf="povshow"><a
+                                                *ngFor="let member of book.povCharacters; let isLast=last"> <a
+                                                    appUrlInfo #local="localVariables" urlinfo="{{member}}" [routerLink]
+                                                    placement="bottom" ngbTooltip="{{ member }}">
+                                                    {{ local.name }}{{isLast ? '' : ', '}} </a> </a> </a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

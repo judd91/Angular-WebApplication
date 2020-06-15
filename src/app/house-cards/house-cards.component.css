@@ -1,0 +1,65 @@
+.form-control{
+  margin: 2% 0 2% 0
+}
+
+/* #5d5f5e, #e2e9e7, #c3bdb6, #105878 */
+/* #f5f1dc, #50594b, #974449, #edd49d */
+/* #933836, #f4e3cd */
+.cardscontainer{
+  top: 64px;
+  position: absolute;
+  width: 100%;
+}
+.card {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    margin: 1% 2% 1% 2%;
+    background: radial-gradient(circle, rgba(226,233,231,1) 0%, rgba(16,88,120,0.9) 100%);
+    min-height: 200px;
+  }
+
+  mat-paginator {
+    margin-top: 1 rem
+  }
+  
+  mat-spinner {
+    margin: auto;
+  }
+  
+  .overlay {   
+    opacity: 0.70;
+    transition: all 0.7s;
+    background: #105878;
+    border: #105878;
+    color: #fff;
+  }
+  .overlay:hover {
+    box-shadow: 8px 4px 8px 4px rgba(0, 0, 0, 1);
+    color: #fff;
+    opacity: 1;
+    transition: 0.3s;
+  }
+  
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
+
+  .row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 80px;
+  }
+
+  mat-paginator{
+    background: #333a42;
+    color: #fff;
+  }
+  ::ng-deep .mat-select-value, ::ng-deep .mat-select-arrow {
+    color:white;
+   }

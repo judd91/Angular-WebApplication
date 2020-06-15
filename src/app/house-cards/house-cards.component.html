@@ -1,0 +1,38 @@
+<div class="cardscontainer ">
+    <!-- Search Bar -->
+    <input (keyup.enter)="onSearch(searchBar.value)" #searchBar name="search"
+        class="form-control col-6 col-sm-3 mx-auto" type="text" placeholder="What house are you searching for?"
+        aria-label="Search">
+
+    <!-- Cards with GoT houses -->
+    <div class="row d-flex justify-content-center">
+        <p class="alert alert-danger text-center" *ngIf="!isLoading && houses.length ==0 "> No houses to show </p>
+
+        <div class="card col-4 col-lg-2 text-center" *ngFor="let house of houses">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ house.name }}</h5>
+                <p class="card-text">{{ house.region }}</p>
+                <!-- button to show house details -->
+                <a class="btn btn-primary mt-auto overlay" (click)="sendUrl(house.url)">More info</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <mat-paginator [length]="totalHouses" [pageSize]="housesPerPage" [pageSizeOptions]="pageSizeOptions"
+            (page)="onChangedPage($event)" *ngIf="houses"></mat-paginator>
+        <p class="mat-body-1 info-text" *ngIf="houses <= 0 ">No houses</p>
+    </footer>
+
+</div>
+
+<div *ngIf="isLoading" class="card-img-overlay d-flex justify-content-center align-items-center p-0">
+    <div class=" border-0 bg-transparent" [style.width.px]="135">
+        <mat-spinner [strokeWidth]="7" [diameter]="160" [value]="100" class="card-img">
+        </mat-spinner>
+
+        <div class="card-img-overlay d-flex justify-content-center align-items-center p-0">
+            <img src="../../assets/joffrey.png" alt="image" height="100" width="100">
+        </div>
+    </div>
+</div>

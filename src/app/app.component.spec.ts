@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Web-App-Coding-Challenge-Angular'`, () => {
+  it(`should have as title 'WebAppCodeChallenge'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Web-App-Coding-Challenge-Angular');
+    expect(app.title).toEqual('WebAppCodeChallenge');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Web-App-Coding-Challenge-Angular app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('WebAppCodeChallenge app is running!');
   });
 });
